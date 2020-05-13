@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
 
     //instance variable
     private lateinit var buttons: List<ImageButton>
+    private lateinit var cards: List<MemoryCard>
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,13 +28,19 @@ class MainActivity : AppCompatActivity() {
 
         buttons= listOf(imageButton1, imageButton2,imageButton3,imageButton4,
             imageButton5,imageButton6,imageButton7,imageButton8)
-        for (button in buttons){
+            cards= buttons.indices.map{ index->
+            MemoryCard(images[index])
+        }
+        buttons.forEachIndexed { index,button ->
             button.setOnClickListener {
                 Log.i(TAG,"Button Clicked")
+                val card=cards[index]
+                card.isFaceUp=!card.isFaceUp
+                //in-line if/else
+                button.setImageResource(if(card.isFaceUp)images[index] else ic_code)
+
 
             }
-
-
         }
 
     }
