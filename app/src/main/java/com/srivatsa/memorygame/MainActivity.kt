@@ -3,6 +3,7 @@ package com.srivatsa.memorygame
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.ImageButton
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
@@ -19,11 +20,12 @@ class MainActivity : AppCompatActivity() {
     private var indexOfSingleSelectedCard: Int?=null
 
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val images= mutableListOf(ic_fire, ic_phone, ic_plane, ic_watch)
+        val images= mutableListOf(csk, mi, dc, rcb)
         //Add each image place
         images.addAll(images)
         //making images random
@@ -42,8 +44,18 @@ class MainActivity : AppCompatActivity() {
                 updateViews()
             }
         }
+        resetBtn.setOnClickListener {
+                // code to perform reset action
+            }
+
+
+
+
 
     }
+
+
+
 
     private fun updateViews()
     {
@@ -52,7 +64,7 @@ class MainActivity : AppCompatActivity() {
             if(card.isMatch){
                 button.alpha=0.2f
             }
-            button.setImageResource(if(card.isFaceUp)card.identifier else ic_code)
+            button.setImageResource(if(card.isFaceUp)card.identifier else ipl)
         }
     }
 
@@ -98,6 +110,8 @@ class MainActivity : AppCompatActivity() {
 
         if(cards[position1].identifier==cards[position2].identifier)
         {
+
+
             Toast.makeText(this,"It's a match!", Toast.LENGTH_SHORT).show()
             cards[position1].isMatch=true
             cards[position2].isMatch=true
