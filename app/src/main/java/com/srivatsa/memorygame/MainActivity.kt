@@ -46,16 +46,10 @@ class MainActivity : AppCompatActivity() {
         }
         resetBtn.setOnClickListener {
                 // code to perform reset action
+            restoreCards()
+            updateViews()
             }
-
-
-
-
-
     }
-
-
-
 
     private fun updateViews()
     {
