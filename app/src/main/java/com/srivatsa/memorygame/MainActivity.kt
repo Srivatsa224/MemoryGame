@@ -46,6 +46,8 @@ class MainActivity : AppCompatActivity() {
         }
         resetBtn.setOnClickListener {
                 // code to perform reset action
+
+            images.shuffle()
             restoreCards()
             updateViews()
             }
